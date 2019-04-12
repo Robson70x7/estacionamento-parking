@@ -4,5 +4,11 @@
     {% for pessoa in pessoas %}
         <li>{{pessoa.nome}}</li>
     {% endfor %}
-        
 </ul>
+
+<form action="{% url 'core:pessoa-novo' %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <input type="submit" value="Cadastrar">
+</form>

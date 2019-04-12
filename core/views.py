@@ -1,18 +1,61 @@
-from django.shortcuts import render
-from .models import Pessoa,  Veiculo, MovRotativo
+from django.shortcuts import render, redirect
+from . import models, forms
+
 
 def home(request):
     template_name = 'base.html'
-    return render(request, template_name, {'mensagem': 'ola mundo'})
+    context = {'mensagem': 'ola mundo'}
+    return render(request, template_name, context)
 
-def listar_pessoas(request):
-    pessoas = Pessoa.objects.all()
-    return render(request, 'core/listar_pessoas.html', {'pessoas':pessoas})
 
-def listar_veiculos(request):
-    veiculos = Veiculo.objects.all()
-    return render(request, 'core/listar_veiculos.html', {'veiculos':veiculos})
+def lista_pessoas(request):
+    pessoas = models.Pessoa.objects.all()
+    form = forms.PessoaForm()
+    context = {'pessoas':pessoas, 'form':form}
+    return render(request, 'core/listar_pessoas.html', context)
 
-def listar_movrotativos(request):
-    mov_rots = MovRotativo.objects.all()
-    return render(request, 'core/listar_mov_rot.html', {'mov_rots':mov_rots})
+
+def pessoa_novo(request):
+    form = forms.PessoaForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    
+    return redirect('core:lista_pessoas')
+
+
+def lista_veiculos(request):
+    veiculos = models.Veiculo.objects.all()
+    form = forms.VeiculoForm()
+    context = {'veiculos':veiculos, 'form':form}
+    return render(request, 'core/listar_veiculos.html', context)
+
+
+def veiculo_novo(request):
+    form = forms.VeiculoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    return redirect('core:lista_veiculos')
+
+
+def lista_movrotativos(request):
+    mov_rots = models.MovRotativo.objects.all()
+    form = forms.MovRotativoForm()
+    context_data = {'mov_rots':mov_rots, 'form':form}
+    return render(request, 'core/listar_mov_rot.html', context_data)
+
+
+def movrotativo_novo(request):
+    form = forms.MovRotativoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    return redirect('core:lista_movrotativos')
+
+
+def lista_mensalistas(request):
+    mesalistas = models.Mensalista.objects.all()
+    return render(request, 'core/lista-mensalistas.html.j2',{'mensalistas':mesalistas})
+
+
+def lista_movmensalistas(request):
+    mov_menslistas = models.MovMensalista.objects.all()
+    return render(request, 'core/lista-movmensalistas.html', {'mov_mensalistas':mov_menslistas})

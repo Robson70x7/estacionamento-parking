@@ -1,8 +1,12 @@
 <h2>Lista de movimento rotativo</h2>
 <ul>
     {% for rotativo in mov_rots %}
-        {{rotativo}}
-        <!-- <li><b>Veiculo:</b>{{rotativo.veiculo.modelo}} <b>Data Entrada:</b>{{ rotativo.checkin}} <b>Data Saída:</b>{{ rotativo.checkout }}</li> -->
+        <li>{{rotativo}}</li>
     {% endfor %}
-        
 </ul>
+
+<form action="{% url 'core:movrotativo_novo' %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Cadastrar">
+</form>
