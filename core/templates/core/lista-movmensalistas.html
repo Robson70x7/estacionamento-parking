@@ -6,3 +6,9 @@
         <li>{{ mov_mensalista.mensalista.veiculo.proprietario.nome }}</li>
     {% endfor %}
 </ul>
+
+<form action="{% url 'core:movmensalista_novo' %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Cadastrar">
+    </form>

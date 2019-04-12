@@ -53,9 +53,27 @@ def movrotativo_novo(request):
 
 def lista_mensalistas(request):
     mesalistas = models.Mensalista.objects.all()
-    return render(request, 'core/lista-mensalistas.html.j2',{'mensalistas':mesalistas})
+    form = forms.MensalistaForm()
+    context_data = {'mensalistas':mesalistas, 'form': form}
+    return render(request, 'core/lista-mensalistas.html', context_data)
+
+
+def mensalista_novo(request):
+    form = forms.MensalistaForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    return redirect('core:lista_mensalistas')
 
 
 def lista_movmensalistas(request):
     mov_menslistas = models.MovMensalista.objects.all()
-    return render(request, 'core/lista-movmensalistas.html', {'mov_mensalistas':mov_menslistas})
+    form = forms.MovMensalistaForm()
+    context_data = {'mov_mensalistas':mov_menslistas, 'form': form}
+    return render(request, 'core/lista-movmensalistas.html', context_data)
+
+
+def movmesalista_novo(request):
+    form = forms.MovMensalistaForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    return redirect('core:lista_mensalistas')

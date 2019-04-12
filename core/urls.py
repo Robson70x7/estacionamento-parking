@@ -13,7 +13,8 @@ urlpatterns = [
     path('mov-rotativos/', views.lista_movrotativos, name='lista_movrotativos'),
     path('movrotativo-novo/', views.movrotativo_novo, name='movrotativo_novo'),
     path('mensalistas/', views.lista_mensalistas, name='lista_mensalistas'),
-    path('mov-mensalistas/', views.lista_movmensalistas,
-            name='lista_movmensalistas'),
+    path('mensalista-novo/', views.mensalista_novo, name='mensalista_novo'),
+    path('mov-mensalistas/', views.lista_movmensalistas,name='lista_movmensalistas'),
+    path('mov-mensalista-novo/', views.movmesalista_novo,name='movmensalista_novo'),
     
 ]
