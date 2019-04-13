@@ -22,7 +22,7 @@ class Veiculo(models.Model):
     modelo = models.CharField(max_length=60)
     placa = models.CharField(max_length=8)
     cor = models.CharField(max_length=20)
-    observacoes = models.TextField('Observações')
+    observacoes = models.TextField('Observações', null=True, blank=True)
 
     def __str__(self):
         return self.modelo + ' '+ self.placa

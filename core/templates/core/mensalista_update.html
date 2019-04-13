@@ -1,0 +1,7 @@
+
+<h2>Atualizar Mensalista {{ mensalista.veiculo.proprietario.nome }}</h2>
+<form action="{% url 'core:mensalista_update' mensalista.id %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Cadastrar">
+</form>

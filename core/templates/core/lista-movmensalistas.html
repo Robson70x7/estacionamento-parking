@@ -3,7 +3,7 @@
 
 <ul>
     {% for mov_mensalista in mov_mensalistas %}
-        <li>{{ mov_mensalista.mensalista.veiculo.proprietario.nome }}</li>
+        <li> <a href="{% url 'core:movmensalista_update' mov_mensalista.id %}"> {{ mov_mensalista.mensalista.veiculo.proprietario.nome }}</a></li>
     {% endfor %}
 </ul>
 

@@ -2,7 +2,7 @@
 <h2>Lista de Mensalistas</h2>
 <ul>
     {% for mensalista in mensalistas %}
-        <li>{{ mensalista.veiculo.proprietario.nome}}</li>
+        <li> <a href="{% url 'core:mensalista_update' mensalista.id %}"> {{ mensalista.veiculo.proprietario.nome}}</a></li>
     {% endfor %}
 </ul>
 
