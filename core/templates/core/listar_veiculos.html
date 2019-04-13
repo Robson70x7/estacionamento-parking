@@ -1,7 +1,7 @@
 <h2>Lista de veiculos</h2>
 <ul>
     {% for veiculo in veiculos %}
-        <li><a href="{% url 'core:veiculo_update' veiculo.id %}">{{veiculo.modelo}}</a></li>
+        <li><a href="{% url 'core:veiculo_update' veiculo.id %}">{{veiculo.modelo}}</a> - <a href="{% url 'core:veiculo_delete' veiculo.id %}">Excluir</a></li>
     {% endfor %}
 </ul>
 <form action="{% url 'core:veiculo_novo' %}" method="post">

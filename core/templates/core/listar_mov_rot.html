@@ -1,7 +1,8 @@
 <h2>Lista de movimento rotativo</h2>
 <ul>
     {% for rotativo in mov_rots %}
-        <li> <a href="{% url 'core:movrotativo_update' rotativo.id %}"> {{rotativo}} </a></li>
+        <li> <a href="{% url 'core:movrotativo_update' rotativo.id %}"> {{rotativo}} </a> - 
+            <a href="{% url 'core:movrotativo_delete' rotativo.id %}">Excluir</a> </li>
     {% endfor %}
 </ul>
 

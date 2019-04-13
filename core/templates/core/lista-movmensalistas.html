@@ -3,7 +3,10 @@
 
 <ul>
     {% for mov_mensalista in mov_mensalistas %}
-        <li> <a href="{% url 'core:movmensalista_update' mov_mensalista.id %}"> {{ mov_mensalista.mensalista.veiculo.proprietario.nome }}</a></li>
+        <li> 
+            <a href="{% url 'core:movmensalista_update' mov_mensalista.id %}"> {{ mov_mensalista.mensalista.veiculo.proprietario.nome }}</a> - 
+            <a href="{% url 'core:movmensalista_delete' mov_mensalista.id %}">Excluir</a>
+        </li>
     {% endfor %}
 </ul>
 

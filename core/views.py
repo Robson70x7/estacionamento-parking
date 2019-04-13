@@ -36,6 +36,17 @@ def pessoa_update(request, pk):
     return render(request, 'core/pessoa_update.html', data)
 
 
+def pessoa_delete(request, pk):
+    pessoa_delete = models.Pessoa.objects.get(pk=pk)
+    data = {'obj':pessoa_delete}
+
+    if request.method == 'POST':
+        pessoa_delete.delete()
+        return redirect('core:lista_pessoas')
+
+    return render(request, 'core/confirm_delete.html', data)
+
+
 def lista_veiculos(request):
     veiculos = models.Veiculo.objects.all()
     form = forms.VeiculoForm()
@@ -61,6 +72,17 @@ def veiculo_update(request, pk):
             return redirect('core:lista_veiculos')
 
     return render(request, 'core/veiculo_update.html', data)
+
+
+def veiculo_delete(request, pk):
+    veiculo = models.Veiculo.objects.get(pk=pk)
+    data = {'obj':veiculo}
+
+    if request.method == 'POST':
+        veiculo.delete()
+        return redirect('core:lista_veiculos')
+
+    return render(request, 'core/confirm_delete.html',data)
 
 
 def lista_movrotativos(request):
@@ -90,6 +112,17 @@ def movrotativo_update(request, pk):
     return render(request, 'core/movrotativo_update.html',data)
 
 
+def movrotativo_delete(request, pk):
+    movrotativo = models.MovRotativo.objects.get(pk=pk)
+    data = {'obj':movrotativo}
+
+    if request.method == 'POST':
+        movrotativo.delete()
+        return redirect('core:lista_movrotativos')
+
+    return render(request, 'core/confirm_delete.html', data)
+
+
 def lista_mensalistas(request):
     mesalistas = models.Mensalista.objects.all()
     form = forms.MensalistaForm()
@@ -117,6 +150,17 @@ def mensalista_update(request, pk):
     return render(request, 'core/mensalista_update.html',data)
 
 
+def mensalista_delete(request, pk):
+    mensalista = models.Mensalista.objects.get(pk=pk)
+    data = {'obj':mensalista}
+
+    if request.method == 'POST':
+        mensalista.delete()
+        return redirect('core:lista_mensalistas')
+
+    return render(request, 'core/confirm_delete.html', data)
+
+
 def lista_movmensalistas(request):
     mov_menslistas = models.MovMensalista.objects.all()
     form = forms.MovMensalistaForm()
@@ -142,3 +186,14 @@ def movmensalista_update(request, pk):
             return redirect('core:lista_movmensalistas')
 
     return render(request, 'core/movmensalista_update.html', data)
+
+
+def movmensalista_delete(request, pk):
+    movmensalista = models.MovMensalista.objects.get(pk=pk)
+    data = {'obj':movmensalista}
+
+    if request.method == 'POST':
+        movmensalista.delete()
+        return redirect('core:lista_movmensalistas')
+
+    return render(request, 'core/confirm_delete.html', data)
