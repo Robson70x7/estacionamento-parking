@@ -1,17 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+
 
 <h2>Lista do Movimento dos Mensalistas</h2>
 
 <ul>
     {% for mov_mensalista in mov_mensalistas %}
-        <li> 
-            <a href="{% url 'core:movmensalista_update' mov_mensalista.id %}"> {{ mov_mensalista.mensalista.veiculo.proprietario.nome }}</a> - 
-            <a href="{% url 'core:movmensalista_delete' mov_mensalista.id %}">Excluir</a>
-        </li>
+    <li>
+        <a href="{% url 'core:movmensalista_update' mov_mensalista.id %}">
+            {{ mov_mensalista.mensalista.veiculo.proprietario.nome }}</a> -
+        <a href="{% url 'core:movmensalista_delete' mov_mensalista.id %}">Excluir</a>
+    </li>
     {% endfor %}
 </ul>
 
 <form action="{% url 'core:movmensalista_novo' %}" method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Cadastrar">
-    </form>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Cadastrar">
+</form>
+{% endblock main %}

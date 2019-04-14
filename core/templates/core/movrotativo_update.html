@@ -1,3 +1,9 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+    
+
 <h2>Atualizar movimento rotativo relativo ao {{ mov_rotativo.veiculo.modelo }}</h2>
 
 <form action="{% url 'core:movrotativo_update' mov_rotativo.id %}" method="post">
@@ -5,3 +11,4 @@
     {{form.as_p}}
     <input type="submit" value="Atualizar">
 </form>
+{% endblock main %}
