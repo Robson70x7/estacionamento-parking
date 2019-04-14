@@ -10,6 +10,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['localhost','estacionamento-garage.herokuapp.com']
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
