@@ -50,7 +50,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'estacionamento.wsgi.application'
 
-default_dburl = 'sqlite:///'+ os.path.join(os.BASE_DIR, 'db.sqlite3')
+default_dburl = 'sqlite:///'+ os.path.join(BASE_DIR, 'db.sqlite3')
 DATABASES = {
     'default':config('DATABASE_URL', default=default_dburl, cast=dburl),
 }
@@ -82,4 +82,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(os.BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
