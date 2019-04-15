@@ -1,19 +1,40 @@
 {% extends 'base.html' %}
-
+{% load bootstrap %}
 
 {% block main %}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Lista de movimento rotativo</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <form action="{% url 'core:movrotativo_novo' %}" method="post">
+            {% csrf_token %}
+            {{form | bootstrap}}
+            <input type="submit" class="btn btn-primary" value="Cadastrar">
+        </form>
+    </div>
+    <div class="col-md-6">
 
-<h2>Lista de movimento rotativo</h2>
-<ul>
-    {% for rotativo in mov_rots %}
-    <li> <a href="{% url 'core:movrotativo_update' rotativo.id %}"> {{rotativo}} </a> - 
-        <a href="{% url 'core:movrotativo_delete' rotativo.id %}">Excluir</a> </li>
-        {% endfor %}
-    </ul>
-    
-    <form action="{% url 'core:movrotativo_novo' %}" method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Cadastrar">
-    </form>
+        <table class="table table-light table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rotativo in mov_rots %}
+                    <tr>
+                        <td><a href="{% url 'core:movrotativo_update' rotativo.id %}"> {{rotativo}} </a></td>
+                        <td><a href="{% url 'core:movrotativo_delete' rotativo.id %}" class="btn btn-danger">Excluir</a> </li></td>
+                    </tr>
+                 {% endfor %}
+            </tbody>
+        </table>
+
+        
+    </div>
+</div>
 {% endblock main %}

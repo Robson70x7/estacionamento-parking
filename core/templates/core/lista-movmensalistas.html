@@ -1,24 +1,50 @@
 {% extends 'base.html' %}
-
+{% load bootstrap %}
 
 {% block main %}
 
+<div class="row">
+    <div class="col-md-12">
+        <h2>Lista do Movimento dos Mensalistas</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <form action="{% url 'core:movmensalista_novo' %}" method="post">
+            {% csrf_token %}
+            {{form | bootstrap}}
+            <input type="submit" class="btn btn-primary" value="Cadastrar">
+        </form>
+    </div>
+    <div class="col-md-6">
 
-<h2>Lista do Movimento dos Mensalistas</h2>
+        <table class="table table-light table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mov_mensalista in mov_mensalistas %}
+                <tr>
+                    <td>
+                        <a
+                            href="{% url 'core:movmensalista_update' mov_mensalista.id %}">{{ mov_mensalista.mensalista.veiculo.proprietario.nome }}</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'core:movmensalista_delete' mov_mensalista.id %} "
+                            class="btn btn-danger">Excluir</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-<ul>
-    {% for mov_mensalista in mov_mensalistas %}
-    <li>
-        <a href="{% url 'core:movmensalista_update' mov_mensalista.id %}">
-            {{ mov_mensalista.mensalista.veiculo.proprietario.nome }}</a> -
-        <a href="{% url 'core:movmensalista_delete' mov_mensalista.id %}">Excluir</a>
-    </li>
-    {% endfor %}
-</ul>
+    </div>
+</div>
 
-<form action="{% url 'core:movmensalista_novo' %}" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Cadastrar">
-</form>
+
+
+
 {% endblock main %}

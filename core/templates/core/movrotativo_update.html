@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
-
+{% load bootstrap %}
 
 {% block main %}
-    
-
-<h2>Atualizar movimento rotativo relativo ao {{ mov_rotativo.veiculo.modelo }}</h2>
-
-<form action="{% url 'core:movrotativo_update' mov_rotativo.id %}" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Atualizar">
-</form>
+<div class="row">
+    <div class="col-md-12">
+        <h2>Atualizar movimento rotativo relativo ao {{ mov_rotativo.veiculo.modelo }}</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <form action="{% url 'core:movrotativo_update' mov_rotativo.id %}" method="post">
+            {% csrf_token %}
+            {{form | bootstrap }}
+            <input type="submit" class="btn btn-primary" value="Atualizar">
+        </form>
+    </div>
+</div>
 {% endblock main %}

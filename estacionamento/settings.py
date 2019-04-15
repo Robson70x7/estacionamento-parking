@@ -1,6 +1,6 @@
 import os
-from decouple import config
 from dj_database_url import parse as dburl
+from decouple import config
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -18,7 +18,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core.apps.CoreConfig'
+    'bootstrapform',
+    'core.apps.CoreConfig',
 ]
 
 MIDDLEWARE = [
