@@ -5,8 +5,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def home(request):
     template_name = 'core/index.html'
-    context = {'message': 'ola mundo'}
-    return render(request, template_name, context)
+    return render(request, template_name)
 
 @login_required
 def lista_pessoas(request):
