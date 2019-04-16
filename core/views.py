@@ -11,8 +11,8 @@ def home(request):
 def lista_pessoas(request):
     pessoas = models.Pessoa.objects.all()
     form = forms.PessoaForm()
-    context = {'pessoas':pessoas, 'form':form}
-    return render(request, 'core/listar_pessoas.html', context)
+    data = {'pessoas':pessoas, 'form':form}
+    return render(request, 'core/listar_pessoas.html', data)
 
 @login_required
 def pessoa_novo(request):
