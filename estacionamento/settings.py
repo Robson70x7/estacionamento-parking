@@ -8,7 +8,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['localhost','estacionamento-parking.herokuapp.com/']
+ALLOWED_HOSTS = ['localhost','estacionamento-parking.herokuapp.com']
 
 
 INSTALLED_APPS = [
