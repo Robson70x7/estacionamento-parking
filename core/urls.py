@@ -36,6 +36,3 @@ urlpatterns = [
     path('mov-mensalista-update/<int:pk>', views.movmensalista_update, name='movmensalista_update'),
     path('mov-mensalista-delete/<int:pk>', views.movmensalista_delete, name='movmensalista_delete'),
 ]
-
-
-# IMPLEMENTAR A FUNÇÃO DELETE

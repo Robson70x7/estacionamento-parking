@@ -15,12 +15,16 @@
             <input type="submit" class="btn btn-primary" value="Cadastrar">
         </form>
     </div>
-    <div class="col-md-6">
-
+    <div class="col-md-5">
+        
         <table class="table table-light table-hover">
             <thead class="thead-dark">
                 <tr>
                     <th>Nome</th>
+                    <th>Check-in</th>
+                    <th>Check-out</th>
+                    <th>Veiculo</th>
+                    <th>Total</th>
                     <th>Ação</th>
                 </tr>
             </thead>
@@ -28,7 +32,11 @@
                 {% for rotativo in mov_rots %}
                     <tr>
                         <td><a href="{% url 'core:movrotativo_update' rotativo.id %}"> {{rotativo}} </a></td>
-                        <td><a href="{% url 'core:movrotativo_delete' rotativo.id %}" class="btn btn-danger">Excluir</a> </li></td>
+                        <td>{{rotativo.checkin| date:'d/m/Y H:i:s'}}</td>
+                        <td>{{rotativo.checkout|date:'d/m/Y H:i:s'}}</td>
+                        <td>{{rotativo.veiculo.modelo}}</td>
+                        <td>R$ {{rotativo.total}}</td>
+                        <td><a href="{% url 'core:movrotativo_delete' rotativo.id %}" class="pull-right btn btn-danger" style="float:right">Excluir</a> </li></td>
                     </tr>
                  {% endfor %}
             </tbody>
@@ -38,3 +46,9 @@
     </div>
 </div>
 {% endblock main %}
+
+
+{% block title %}
+    Movimento Mensalistas
+{% endblock %}
+    

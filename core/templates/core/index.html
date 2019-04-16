@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>{{ mensagem }}</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+
+{% block main %}
+    <div class="row" style="margin: 10% 30%">
+        <div class="col-md-12 offset-md-1">
+            <h2>Seja bem Vindo! <strong>{{ user.first_name }}</strong></h2>
+        </div>
+    </div>
+{% endblock %}

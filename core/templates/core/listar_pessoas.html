@@ -13,10 +13,7 @@
     <div class="col-md-6">
         <form action="{% url 'core:pessoa-novo' %}" method="post">
             {% csrf_token %}
-
             {{form | bootstrap}}
-
-
             <input type="submit" class="btn btn-primary " value="Cadastrar">
         </form>
     </div>
@@ -30,11 +27,15 @@
                 {% for pessoa in pessoas %}
                 <tr>
                   <td><a href="{% url 'core:pessoa_update' pessoa.id %}"> {{pessoa.nome}} </a> </td>
-                  <td> <a href="{% url 'core:pessoa_delete' pessoa.id %}" class="btn btn-danger">Deletar</a></li></td>
+                  <td> <a href="{% url 'core:pessoa_delete' pessoa.id %}" class="btn btn-danger pull-right">Deletar</a></li></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
+{% endblock %}
+
+{% block title %}
+    Pessoas
 {% endblock %}

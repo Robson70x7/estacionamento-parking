@@ -27,7 +27,7 @@
             {% for mensalista in mensalistas %}
                 <tr>
                     <td><a href="{% url 'core:mensalista_update' mensalista.id %}">{{ mensalista.veiculo.proprietario.nome}}</a></td>
-                    <td><a href="{% url 'core:mensalista_delete' mensalista.id %}" class="btn btn-danger">Excuir</a></td>
+                    <td><a href="{% url 'core:mensalista_delete' mensalista.id %}" class="btn btn-danger pull-right">Excuir</a></td>
                 </tr>
             {% endfor %}        
             </tbody>
@@ -35,3 +35,7 @@
     </div>
 </div>
 {% endblock main %}
+
+{% block title %}
+    Mesalistas
+{% endblock %}

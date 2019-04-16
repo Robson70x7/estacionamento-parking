@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block main %}
+
+
+<div class="row" style="margin: 6% auto">
+    <div class="col-md-10 offset-md-1" >
+        <h2>Login</h2>
+        {% if form.errors %}
+        <p>Usuario ou senha inválidos. Tente novamente</p>
+        {% endif %}
+
+        {% if next %}
+        {% if user.is_authenticated %}
+        <p>Your account doesn't have access to this page. To proceed,
+            please login with an account that has access.</p>
+        {% else %}
+        <p>Please login to see this page.</p>
+        {% endif %}
+        {% endif %}
+
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{form | bootstrap}}
+            <input type="submit" class="btn btn-primary" value="login">
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+
+        <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+    </div>
+</div>
+{% endblock %}

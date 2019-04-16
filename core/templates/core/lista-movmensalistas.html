@@ -2,14 +2,9 @@
 {% load bootstrap %}
 
 {% block main %}
-
-<div class="row">
-    <div class="col-md-12">
-        <h2>Lista do Movimento dos Mensalistas</h2>
-    </div>
-</div>
 <div class="row">
     <div class="col-md-6">
+            <h3>Cadastrar novo Movimento de mensalista</h3>
         <form action="{% url 'core:movmensalista_novo' %}" method="post">
             {% csrf_token %}
             {{form | bootstrap}}
@@ -17,11 +12,14 @@
         </form>
     </div>
     <div class="col-md-6">
-
+        <h3>Lista do Movimento dos Mensalistas</h3>
         <table class="table table-light table-hover">
             <thead class="thead-dark">
                 <tr>
                     <th>Nome</th>
+                    <th>Veiculo</th>
+                    <th>Data Pagamento</th>
+                    <th>Total</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -29,22 +27,25 @@
                 {% for mov_mensalista in mov_mensalistas %}
                 <tr>
                     <td>
-                        <a
-                            href="{% url 'core:movmensalista_update' mov_mensalista.id %}">{{ mov_mensalista.mensalista.veiculo.proprietario.nome }}</a>
+                        <a href="{% url 'core:movmensalista_update' mov_mensalista.id %}">{{ mov_mensalista.mensalista.veiculo.proprietario.nome }}</a>
                     </td>
+                    <td>{{ mov_mensalista.mensalista.veiculo.modelo}}</td>
+                    <td>{{ mov_mensalista.data_pagamento}}</td>
+                    <td>{{ mov_mensalista.total}}</td>
                     <td>
-                        <a href="{% url 'core:movmensalista_delete' mov_mensalista.id %} "
-                            class="btn btn-danger">Excluir</a>
-                    </td>
+                        <div class="btn-group">
+                            <a href="{% url 'core:movmensalista_delete' mov_mensalista.id %} " class="btn btn-danger pull-right">Excluir</a></td>
+                        </div>
+
+                    
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-
     </div>
 </div>
-
-
-
-
 {% endblock main %}
+
+{% block title %}
+    Movimento Mensalistas
+{% endblock %}
