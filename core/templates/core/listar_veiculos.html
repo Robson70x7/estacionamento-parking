@@ -11,7 +11,7 @@
     <div class="col-md-6">
         <form action="{% url 'core:veiculo_novo' %}" method="post">
             {% csrf_token %}
-            {{form.as_p}}
+            {{form | bootstrap}}
             <input type="submit" class="btn btn-primary" value="Cadastrar">
         </form>
     </div>
