@@ -1,7 +1,57 @@
 {% extends 'website/base.html' %}
-
+{% load static %}
 
 {% block main %}
-    <h1>Bem vindo ao site</h1>
+<div class="row no-margin">
+    <div class="col-md-6" style="text-align: right; padding-top:6%; float:right;">
+        <h1>Estacionamento - Parking </h1>
+        <p>Deixe seu carro conosco</p>
+    </div>
+    <div class="col-md-6" style="text-align: center">
+        <img src="{% static 'img/Parking_logo.png' %}" alt="Estacionamento Logo">
+    </div>
+</div>
+<br><br>{% include 'website/menu.html' %} <br><br>
+
+<div class="row">
+    <div class="col-lg-6">
+        <section style="position: relative">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quam perspiciatis voluptatum dolores
+            labore, quibusdam nam sequi mollitia harum officiis iure, veritatis ducimus commodi exercitationem ullam
+            praesentium eveniet debitis pariatur?Odit, laborum? Veritatis cupiditate numquam harum officiis veniam nihil
+            nam esse, a dolor in culpa sit nobis illum fugit dolorum expedita. Sunt adipisci beatae atque recusandae
+            officiis velit nulla tenetur!
+            <br>
+            <button class="btn btn-primary" style="left:5px; bottom:10px;">Ver Informações</button>
+        </section>
+    </div>
+    <div class="col-lg-6">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate voluptatem, id sequi nisi at sunt illum
+        reiciendis, unde sapiente ipsum deleniti distinctio delectus corrupti maxime odio. Ipsam assumenda vitae
+        voluptatum.Totam sapiente reiciendis omnis ipsam eveniet ea, quas cumque aut, aliquam voluptatum accusantium
+        enim quo eligendi? Dolorum expedita dolorem, vero magnam esse obcaecati assumenda voluptatem temporibus dicta
+        voluptatibus? Dignissimos, omnis?
+        <br><br>
+        <button class="btn btn-primary"> Ver Informações</button>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-4">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi voluptas nisi harum vel maiores odit culpa consequatur ex voluptates eos qui omnis, molestiae perferendis tempore, quis, ratione asperiores laboriosam quibusdam?Adipisci, in deleniti? Aliquam exercitationem ea eum iste tenetur fuga rerum molestiae sunt aut alias, cupiditate dolore asperiores provident fugiat minima! Quis fugit veritatis obcaecati soluta ipsum ad autem corporis.
+        dolore! Ea libero praesentium necessitatibus possimus quibusdam commodi iure, minima incidunt nihil iste
+    </div>
+    <div class="col-lg-4" style="text-align: center">
+        <img src="{% static 'img/Parking_logo.png' %}" alt="Estacionamento Logo">
+    </div>
+    <div class="col-lg-4">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus non officia eius odit, dolorem
+        id repudiandae sequi cum vel, iure minima incidunt veniam ipsam labore temporibus. Dolore officia aperiam
+        dicta.Voluptatibus maxime at quisquam dolorum expedita quia veritatis quos laboriosam sint perferendis
+        dignissimos, fuga necessitatibus nam quibusdam obcaecati. Incidunt quibusdam obcaecati deleniti officia sequi,
+        pariatur recusandae praesentium eos nulla voluptatem.
+    </div>
+</div>
+{% include 'website/footer.html' %}
 {% endblock %}
-    

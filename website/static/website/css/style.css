@@ -1,0 +1,16 @@
+.footer-website{
+    position: absolute;
+    bottom: 0
+}
+
+nav li:hover :not(.active){
+    border: 1px solid #ccc;
+}
+
+.row{
+    margin: 1em 0;
+}
+
+.no-margin{
+    margin-top:0;
+}
