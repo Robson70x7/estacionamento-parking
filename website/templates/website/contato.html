@@ -1,0 +1,26 @@
+{% extends 'website/base.html' %}
+{% load bootstrap %}
+
+{% block main %}
+<div class="row">
+    <div class="col-lg-6">
+        <form action="{% url 'website:contato' %}" method="post">
+            {{form | bootstrap}}
+            <input type="reset" value="Limpar" class="btn btn-danger">
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+    <div class="col-lg-6">
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus ipsa alias beatae cum minima expedita,
+            tenetur unde odio numquam, dolores vitae laudantium placeat veritatis eos quisquam ullam dolor, eligendi
+            quod?Iure odio numquam quod optio sit consectetur voluptates distinctio quis ut, omnis ipsa fuga ratione
+            odit consequuntur, aperiam accusamus rem. Mollitia provident ipsa nostrum ex quisquam magni voluptatibus,
+            cum laboriosam!
+        </p>
+        <div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15670931.312588584!2d-96.0213466!3d-16.4800454!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce899637113bfb%3A0x8f4ec560bdc6de4c!2sRua+Rafael+da+Silva+Santos+-+Bonsucesso%2C+Guarulhos+-+SP%2C+07179-167!5e0!3m2!1spt-BR!2sbr!4v1555544054199!5m2!1spt-BR!2sbr" width="500" height="359" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+{% endblock %}

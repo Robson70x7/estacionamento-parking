@@ -14,3 +14,7 @@ nav li:hover :not(.active){
 .no-margin{
     margin-top:0;
 }
+
+.no-margin-left{
+    margin-left: 0;
+}

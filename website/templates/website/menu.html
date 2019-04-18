@@ -2,22 +2,42 @@
     <div class="col-lg-12">
         <nav class="nav nav-pills nav-fill">
             <li class="nav-item">
-                <a class="nav-link active" href="#">Home</a>
+                <a class="nav-link 
+                {% if request.path == '/' %}
+                    active
+                {% endif %}
+                     " href="{% url 'website:home' %}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Serviços</a>
+                <a class="nav-link 
+                {% if request.path == '/servico/' %}
+                    active
+                {% endif %}
+                    " href="{% url 'website:servico' %}">Serviços</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Sobre</a>
+                <a class="nav-link 
+                {% if request.path == '/sobre/' %}
+                    active
+                {% endif %}
+                    " href="#">Sobre</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Planos</a>
+                <a class="nav-link 
+                {% if request.path == '/planos/' %}
+                    active
+                {% endif %}
+                    " href="#">Planos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Contato</a>
+                <a class="nav-link 
+                {% if request.path == '/contato/' %}
+                    active
+                {% endif %}"
+                 href="{% url 'website:contato' %}">Contato</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Logar</a>
+                <a class="nav-link" href="{% url 'core:home' %}">Sistema</a>
             </li>
         </nav>
     </div>
