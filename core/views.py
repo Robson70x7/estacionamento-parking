@@ -6,6 +6,7 @@ from xhtml2pdf import pisa
 from django.template import Context
 from django.http import HttpResponse
 from django.template.loader import get_template
+import csv
 import io
 
 @login_required
@@ -227,3 +228,21 @@ class CreatePdf(View):
         }
 
         return Render.render('core/relatorio_pdf.html', params, 'relatorio_veiculos')
+
+class CreateCSV(View):
+    def get(self, request):
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachement;filename="arquivo.csv"'
+
+        veiculos = models.Veiculo.objects.all()
+
+        writer = csv.writer(response)
+        writer.writerow(['Id','marca','modelo','placa','cor','proprietario','observacoes'])
+
+        for veiculo in veiculos:
+            writer.writerow(
+                [veiculo.id, veiculo.marca, veiculo.modelo, veiculo.placa, 
+                veiculo.cor, veiculo.proprietario, veiculo.observacoes]
+            )
+
+        return response

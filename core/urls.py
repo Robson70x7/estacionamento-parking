@@ -36,6 +36,7 @@ urlpatterns = [
     path('mov-mensalista-update/<int:pk>', views.movmensalista_update, name='movmensalista_update'),
     path('mov-mensalista-delete/<int:pk>', views.movmensalista_delete, name='movmensalista_delete'),
 
-    # Gerar PDF    
+    # Gerar PDF/CSV
     path('create_pdf/', views.CreatePdf.as_view(), name='create_pdf'),
+    path('create_csv/', views.CreateCSV.as_view(), name='create_csv'),
 ]
