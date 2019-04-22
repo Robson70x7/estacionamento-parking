@@ -35,4 +35,7 @@ urlpatterns = [
     path('mov-mensalista-novo/', views.movmesalista_novo, name='movmensalista_novo'),
     path('mov-mensalista-update/<int:pk>', views.movmensalista_update, name='movmensalista_update'),
     path('mov-mensalista-delete/<int:pk>', views.movmensalista_delete, name='movmensalista_delete'),
+
+    # Gerar PDF    
+    path('create_pdf/', views.CreatePdf.as_view(), name='create_pdf'),
 ]

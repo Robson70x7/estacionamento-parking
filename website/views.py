@@ -18,6 +18,7 @@ def servico(request):
     template_name = 'website/servico.html'
     return render(request, template_name)
 
+
 def save_contato(request):
     form = forms.ContatoForm(request.POST or None)
     if form.is_valid():

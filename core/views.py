@@ -1,6 +1,12 @@
 from django.shortcuts import render, redirect
 from . import models, forms
+from django.views.generic.base import View
 from django.contrib.auth.decorators import login_required
+from xhtml2pdf import pisa
+from django.template import Context
+from django.http import HttpResponse
+from django.template.loader import get_template
+import io
 
 @login_required
 def home(request):
@@ -197,3 +203,27 @@ def movmensalista_delete(request, pk):
         return redirect('core:lista_movmensalistas')
 
     return render(request, 'core/confirm_delete.html', data)
+
+class Render:
+    @staticmethod
+    def render(template_name: str, params: dict, filename: str):
+        template = get_template(template_name)
+        html = template.render(params)
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = f'attachment;filename={filename}.pdf'
+        pdf = pisa.CreatePDF(html, dest=response)
+        if not pdf.err:
+            return response
+        else:
+            return HttpResponse('Error Rendering pdf', status=400)
+
+
+class CreatePdf(View):
+    def get(self, request):
+        veiculos = models.Veiculo.objects.all()
+        params = {
+            'veiculos': veiculos,
+            'request': request,
+        }
+
+        return Render.render('core/relatorio_pdf.html', params, 'relatorio_veiculos')
